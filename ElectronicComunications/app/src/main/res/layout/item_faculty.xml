@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:paddingLeft="10dp"
+    android:orientation="vertical"
+    android:layout_marginRight="10dp">
+
+    <TextView
+        android:id="@+id/txtNameFaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text="Name Faculty: " />
+    <TextView
+        android:id="@+id/txtNameDean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Name Dean: " />
+    <TextView
+        android:id="@+id/txtContactDean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Contact Address Dean: " />
+    <TextView
+        android:id="@+id/txtNameAssistant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Name Assistant: "/>
+    <TextView
+        android:id="@+id/txtContactAssistant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Contact Address Assistant: " />
+
+</LinearLayout>

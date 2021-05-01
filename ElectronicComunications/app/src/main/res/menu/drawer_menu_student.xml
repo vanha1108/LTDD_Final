@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home"
+            android:title="Home Page" />
+        <item
+            android:id="@+id/nav_facultyinfor"
+            android:title="Faculty Information" />
+        <item
+            android:id="@+id/nav_class"
+            android:title="Classes" />
+        <item
+            android:id="@+id/nav_teacherinforinfor"
+            android:title="Teacher Information" />
+        <item
+            android:id="@+id/nav_studentinfor"
+            android:title="Student Information" />
+        <item
+            android:id="@+id/nav_grade"
+            android:title="Grade" />
+        <item
+            android:id="@+id/nav_tuition"
+            android:title="Tuition" />
+        <item
+            android:id="@+id/nav_testschedule"
+            android:title="Test Schedule" />
+        <item
+            android:id="@+id/nav_timetable"
+            android:title="Time Table" />
+        <item
+            android:id="@+id/nav_subject"
+            android:title="Subjects" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Log Out" />
+    </group>
+
+
+</menu>
