@@ -1,3 +1,53 @@
 <resources>
     <string name="app_name">ElectronicComunications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="classAdminID">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="classNameAdmin">
+        <item>17110CLS2</item>
+        <item>17110CLS3</item>
+    </string-array>
+    <string-array name="classAdminNoS">
+        <item>30</item>
+        <item>35</item>
+    </string-array>
+
+    <string-array name="teacherNameAdmin">
+        <item>Huynh Xuan Phung</item>
+        <item>Nguyen Dang Quang</item>
+    </string-array>
+    <string-array name="teacherDateAdmin">
+        <item>10/2/1976</item>
+        <item>2/10/1978</item>
+    </string-array>
+    <string-array name="teacherSexAdmin">
+        <item>Male</item>
+        <item>Male</item>
+    </string-array>
+    <string-array name="teacherPhoneAdmin">
+        <item>123</item>
+        <item>345</item>
+    </string-array>
+    <string-array name="teacherMailAdmin">
+        <item>abc</item>
+        <item>xyz</item>
+    </string-array>
+
+    <string-array name="tuitionSubjectAdmin">
+        <item>OOP</item>
+        <item>KTLT</item>
+    </string-array>
+    <string-array name="tuitionNoCAdmin">
+        <item>3</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="tuitionPriceAdmin">
+        <item>1996000</item>
+        <item>1996000</item>
+    </string-array>
+
 </resources>
