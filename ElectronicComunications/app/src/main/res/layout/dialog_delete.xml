@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_marginRight="10dp">
+
+    <TextView
+        android:id="@+id/txtDialogDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Are you sure? Do you want to delete?"
+        android:textColor="#0B0B0B"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Yes"
+            android:textColor="#13466E"
+            android:textSize="30sp"
+            app:backgroundTint="#FBFAFA" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Cancel"
+            android:textColor="#13466E"
+            android:textSize="30sp"
+            app:backgroundTint="#FBFAFA" />
+
+    </LinearLayout>
+</LinearLayout>
