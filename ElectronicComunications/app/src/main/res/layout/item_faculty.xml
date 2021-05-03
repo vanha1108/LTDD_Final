@@ -15,30 +15,30 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@android:color/holo_blue_dark"
-        android:text="Name Faculty: " />
+        android:text="Faculty Name: " />
     <TextView
         android:id="@+id/txtNameDean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Name Dean: " />
+        android:text="Dean Name: " />
     <TextView
         android:id="@+id/txtContactDean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Contact Address Dean: " />
+        android:text="Contact Address of Dean: " />
     <TextView
         android:id="@+id/txtNameAssistant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Name Assistant: "/>
+        android:text="Assistant Name: "/>
     <TextView
         android:id="@+id/txtContactAssistant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Contact Address Assistant: " />
+        android:text="Contact Address of Assistant: " />
 
 </LinearLayout>

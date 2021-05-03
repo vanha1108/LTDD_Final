@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2196f3"
+    android:background="#1a8cff"
     tools:context=".LoginActivity">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginLeft="128dp"
         android:layout_marginTop="164dp"
         android:text="Log In"
-        android:textColor="@color/white"
+        android:textColor="#d7ffd7"
         android:textSize="60dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +32,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:hint="Username"
+        android:textColorHint="#d5ffd5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
         android:layout_marginRight="30dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColorHint="#d5ffd5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtUsernameLogIn" />
@@ -60,6 +62,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
+        android:textColor="@color/black"
         android:text="Remember Password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPasswordLogIn" />
@@ -71,10 +74,10 @@
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="60dp"
-        android:backgroundTint="#CCCCCC"
+        android:backgroundTint="#d7ffd7"
         android:text="Login"
         android:textAllCaps="false"
-        android:textColor="#13466E"
+        android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chkRemember" />
