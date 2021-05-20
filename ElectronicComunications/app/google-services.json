@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "302821126701",
+    "project_id": "ltddfinal",
+    "storage_bucket": "ltddfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302821126701:android:a4b907cacd95eba6467ea4",
+        "android_client_info": {
+          "package_name": "com.laptrinhdidong.electroniccomunications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302821126701-dcrqrfrpdsmbujp6eir7mj1p2vm8o329.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJCqM9IwaVq4CzLKEC-oaAL_vfIndyyIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302821126701-dcrqrfrpdsmbujp6eir7mj1p2vm8o329.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
