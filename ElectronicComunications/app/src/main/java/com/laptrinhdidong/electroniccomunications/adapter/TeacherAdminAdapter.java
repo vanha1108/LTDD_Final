@@ -1,4 +1,4 @@
-package com.example.displayfinalproject.Adapter;
+package com.laptrinhdidong.electroniccomunications.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

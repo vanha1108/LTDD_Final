@@ -1,4 +1,4 @@
-package com.example.displayfinalproject.Adapter;
+package com.laptrinhdidong.electroniccomunications.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.laptrinhdidong.electroniccomunications.R;
 
 
-public class TuitionAdminAdapter extends RecyclerView.Adapter<TuitionAdminAdapter.MyViewHolder> {
+public class ClassesAdminAdapter extends RecyclerView.Adapter<ClassesAdminAdapter.MyViewHolder> {
 
     String data1[], data2[], data3[];
 
     Context context;
 
-    public TuitionAdminAdapter(Context ct, String s1[], String s2[], String s3[]) {
+    public ClassesAdminAdapter(Context ct, String s1[], String s2[], String s3[]) {
         context = ct;
         data1 = s1;
         data2 = s2;
@@ -29,7 +29,7 @@ public class TuitionAdminAdapter extends RecyclerView.Adapter<TuitionAdminAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.tuition_admin_itemview, parent, false);
+        View view = inflater.inflate(R.layout.class_admin_itemview, parent, false);
 
         return new MyViewHolder(view);
     }
@@ -54,9 +54,9 @@ public class TuitionAdminAdapter extends RecyclerView.Adapter<TuitionAdminAdapte
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            myText1 = itemView.findViewById(R.id.txtTuitionSubjectAdmin);
-            myText2 = itemView.findViewById(R.id.txtTuitionPriceAdmin);
-            myText3 = itemView.findViewById(R.id.txtTuitionNoCAdmin);
+            myText1 = itemView.findViewById(R.id.txtClassIDAdmin);
+            myText2 = itemView.findViewById(R.id.txtClassNameAdmin);
+            myText3 = itemView.findViewById(R.id.txtClassNoSAdmin);
 
         }
     }

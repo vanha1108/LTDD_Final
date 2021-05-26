@@ -1,4 +1,4 @@
-package fragment;
+package com.laptrinhdidong.electroniccomunications.fragment;
 
 import android.os.Bundle;
 
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.displayfinalproject.Adapter.TuitionAdminAdapter;
+import com.laptrinhdidong.electroniccomunications.adapter.TuitionAdminAdapter;
 import com.laptrinhdidong.electroniccomunications.R;
 
 

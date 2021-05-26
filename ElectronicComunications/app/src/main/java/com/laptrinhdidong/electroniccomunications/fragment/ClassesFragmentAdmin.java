@@ -1,4 +1,4 @@
-package fragment;
+package com.laptrinhdidong.electroniccomunications.fragment;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.laptrinhdidong.electroniccomunications.R;
-import com.example.displayfinalproject.Adapter.ClassesAdminAdapter;
+import com.laptrinhdidong.electroniccomunications.adapter.ClassesAdminAdapter;
 
 import java.util.ArrayList;
 
