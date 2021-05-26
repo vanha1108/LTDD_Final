@@ -22,7 +22,6 @@ import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragment;
-import com.laptrinhdidong.electroniccomunications.fragment.TimetableFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
