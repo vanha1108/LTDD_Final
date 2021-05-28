@@ -3,14 +3,22 @@ package com.laptrinhdidong.electroniccomunications.model;
 import java.io.Serializable;
 
 public class FacultyEntity implements Serializable {
-    private int id;
     private String facultyName;
     private String deanName;
     private String addressDean;
     private String assistantName;
     private String addressAssistant;
 
+    public FacultyEntity() {
+    }
 
+    public FacultyEntity(String facultyName, String deanName, String addressDean, String assistantName, String addressAssistant) {
+        this.facultyName = facultyName;
+        this.deanName = deanName;
+        this.addressDean = addressDean;
+        this.assistantName = assistantName;
+        this.addressAssistant = addressAssistant;
+    }
 
     public String getFacultyName() {
         return facultyName;
@@ -50,13 +58,5 @@ public class FacultyEntity implements Serializable {
 
     public void setAddressAssistant(String addressAssistant) {
         this.addressAssistant = addressAssistant;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

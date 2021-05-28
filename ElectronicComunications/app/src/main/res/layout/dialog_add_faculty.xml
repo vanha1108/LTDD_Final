@@ -22,6 +22,7 @@
 
     <EditText
         android:hint="Enter Faculty Name "
+        android:textSize="15dp"
         android:id="@+id/edtAddFacultyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
 
     <EditText
         android:hint="Enter Dean Name"
+        android:textSize="15dp"
         android:id="@+id/edtAddDeanName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,6 +56,7 @@
 
     <EditText
         android:hint="Enter Contact Address of Dean"
+        android:textSize="15dp"
         android:id="@+id/edtAddAddressDean"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,6 +73,7 @@
 
     <EditText
         android:hint="Enter Assistant Name"
+        android:textSize="15dp"
         android:id="@+id/edtAddAssistantName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,6 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
+        android:textSize="15dp"
         android:hint="Enter Contact Address of Assistant"
         android:id="@+id/edtAddAddressAssistant"
         android:layout_width="match_parent"
@@ -115,7 +120,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtAddDeanName" />
 
     <Button
-        android:id="@+id/btnCloseClass"
+        android:id="@+id/btnCloseFaculty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
