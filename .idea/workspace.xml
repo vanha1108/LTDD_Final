@@ -25,20 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e347a46-90d0-441d-bc19-b188f41151bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/LTDD_Final.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_edit_informstudent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/grade_admin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/grade_parent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/grade_student.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/informstudent_admin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/informstudent_parent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/informstudent_student.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/testschedule_admin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/testschedule_parent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/testschedule_student.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_add_grade.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_add_testschedule.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_edit_grade.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_edit_testschedule.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_update_delete_grade.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_update_delete_informstudent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_update_delete_testschedule.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_edit_informstudent.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ElectronicComunications/app/src/main/res/layout/dialog_edit_informstudent.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +66,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NoteManagementSystem" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Lap Trinh DD/NoteManagementSystem" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunManager">
@@ -159,16 +154,25 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="254" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619912723953">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
     <state x="254" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.864@62.0.1474.864" timestamp="1619912723953" />
-    <state x="589" y="175" key="FileChooserDialogImpl" timestamp="1619915143943">
+    <state x="589" y="175" key="FileChooserDialogImpl" timestamp="1622122418589">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619850124077" />
-    <state x="589" y="175" key="FileChooserDialogImpl/62.0.1474.864@62.0.1474.864" timestamp="1619915143943" />
+    <state x="589" y="175" key="FileChooserDialogImpl/62.0.1474.864@62.0.1474.864" timestamp="1622122418589" />
+    <state x="380" y="175" key="IDE.errors.dialog" timestamp="1622087722584">
+      <screen x="62" y="0" width="1474" height="864" />
+    </state>
+    <state x="380" y="175" key="IDE.errors.dialog/62.0.1474.864@62.0.1474.864" timestamp="1622087722584" />
+    <state x="462" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1622170796113">
+      <screen x="62" y="0" width="1474" height="864" />
+    </state>
+    <state x="462" y="181" width="672" height="678" key="search.everywhere.popup/62.0.1474.864@62.0.1474.864" timestamp="1622170796113" />
   </component>
 </project>
