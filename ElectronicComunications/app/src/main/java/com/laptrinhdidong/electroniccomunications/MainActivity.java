@@ -20,6 +20,7 @@ import com.laptrinhdidong.electroniccomunications.fragment.LogOutFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ParentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TimeTableFragment;
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_subject:
                 toolbar.setTitle("Subject");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SubjectFragment()).commit();
+                        new SubjectAdminFragment()).commit();
                 break;
             case R.id.nav_logout:
                 toolbar.setTitle("Log Out");

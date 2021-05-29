@@ -9,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.laptrinhdidong.electroniccomunications.R;
 
-public class TimeTableFragment extends Fragment {
+public class TimeTableAdminFragment extends Fragment {
 
     private Dialog dialog;
     private FloatingActionButton btnShowDialog;
@@ -32,7 +33,7 @@ public class TimeTableFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_time_table, container, false);
+        View view = inflater.inflate(R.layout.fragment_time_table_admin, container, false);
 
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.dialog_add_time_table);
@@ -57,6 +58,8 @@ public class TimeTableFragment extends Fragment {
         btnClose.setOnClickListener(v-> {
             dialog.dismiss();
         });
+
+
 
         return view;
     }
