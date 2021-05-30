@@ -16,15 +16,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.laptrinhdidong.electroniccomunications.R;
+import com.laptrinhdidong.electroniccomunications.adapter.FacultyAdapter;
 import com.laptrinhdidong.electroniccomunications.model.FacultyEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FacultyFragment extends Fragment {
 
-    private RecyclerView recyclerViewFaculty;
     private Dialog dialog;
 
     private Button btnAdd, btnClose;
@@ -33,6 +40,10 @@ public class FacultyFragment extends Fragment {
     private FloatingActionButton btnShow;
 
     DatabaseReference mData;
+    private RecyclerView recyclerViewFaculty;
+    private FacultyAdapter adapter ;
+//    private List<FacultyEntity> mListFaculty;
+//    private FacultyAdapter adapter ;
 
 
     @Nullable
@@ -51,16 +62,44 @@ public class FacultyFragment extends Fragment {
         btnClose = dialog.findViewById(R.id.btnCloseFaculty);
         btnShow = view.findViewById(R.id.btnShowDialogAddFaculty);
 
-        // Em chưa findById cho mấy cái editText mà
         edtNameFaculty = dialog.findViewById(R.id.edtAddFacultyName);
         edtNameDean = dialog.findViewById(R.id.edtAddDeanName);
         edtAddressDean = dialog.findViewById(R.id.edtAddAddressDean);
         edtNameAssistant = dialog.findViewById(R.id.edtAddAssistantName);
         edtAddressAssistant = dialog.findViewById(R.id.edtAddAddressAssistant);
 
+        mData = FirebaseDatabase.getInstance().getReference();
+        recyclerViewFaculty = view.findViewById(R.id.recyclerFaculty);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                RecyclerView.VERTICAL, false);
+        recyclerViewFaculty.setLayoutManager(linearLayoutManager);
+
+        FirebaseRecyclerOptions<FacultyEntity> options =
+                new FirebaseRecyclerOptions.Builder<FacultyEntity>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference()
+                                .child("Faculty"), FacultyEntity.class)
+                        .build();
+
+        adapter = new FacultyAdapter(options);
+        recyclerViewFaculty.setAdapter(adapter);
+
+        //adapter = new FacultyAdapter();
+//        adapter = new FacultyAdapter(new FacultyAdapter.OnLongClick(){
+//            @Override
+//            public void showDialogUpdateDelete(FacultyEntity facultyEntity){
+//
+//            }
+//        });
+
+        // load dữ liệu lên reclerview
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
 //                RecyclerView.VERTICAL, false);
-//        recyclerViewFaculty.setLayoutManager();
+//        recyclerViewFaculty.setLayoutManager(linearLayoutManager);
+//        adapter.setData(mListFaculty);
+//        recyclerViewFaculty.setAdapter(adapter);
+
+
+
 
         btnShow.setOnClickListener(v -> {
             dialog.show();
@@ -83,7 +122,7 @@ public class FacultyFragment extends Fragment {
                 return;
             }
 
-            mData = FirebaseDatabase.getInstance().getReference();
+//            mData = FirebaseDatabase.getInstance().getReference();
             FacultyEntity facultyEntity = new FacultyEntity(nameFaculty, nameDean, addressDean,
                     nameAssistant, addressAssistant);
             mData.child("Faculty").push().setValue(facultyEntity);
@@ -97,5 +136,17 @@ public class FacultyFragment extends Fragment {
             edtAddressDean.setText("");
         });
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

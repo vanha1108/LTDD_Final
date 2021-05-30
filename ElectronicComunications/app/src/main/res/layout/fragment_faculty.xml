@@ -7,7 +7,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPriority"
+        android:id="@+id/recyclerFaculty"
         android:layout_width="match_parent"
         android:layout_height="609dp" />
 
