@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.laptrinhdidong.electroniccomunications.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TimeTableFragment extends Fragment {
@@ -23,10 +24,16 @@ public class TimeTableFragment extends Fragment {
     private Dialog dialog;
     private FloatingActionButton btnShowDialog;
     private TextView txtDate;
-    private Spinner spinnerFalcuty, spinnerClass, spinnerTeacher, spinnerSubject, spinnerStart, spinnerNumber;
+    private Spinner spinnerFacultyDialog, spinnerClassDialog, spinnerTeacherDialog, spinnerSubjectDialog,
+            spinnerStartDialog, spinnerNumberDialog, spinnerFaculty, spinnerClass;
     private Button btnSave, btnClose;
     private String[] lessons, numberLessons;
-    private ArrayAdapter<String> adapterLessons, adapterNumberLesson;
+    private ArrayAdapter<String> adapterLessons, adapterNumberLesson, adapterFalcuty, adapterClass, adapterTeacher, adapterSubject;
+
+    private List<String> falcutyNames = new ArrayList<>();
+    private List<String> classNames = new ArrayList<>();
+    private List<String> teacherNames = new ArrayList<>();
+    private List<String> subjectNames = new ArrayList<>();
 
 
     @Override
@@ -48,34 +55,76 @@ public class TimeTableFragment extends Fragment {
         btnSave = dialog.findViewById(R.id.btnSaveTimeTable);
         btnClose = dialog.findViewById(R.id.btnCloseDialogTimeTable);
         txtDate = dialog.findViewById(R.id.txtDateDialogTimeTable);
-        spinnerFalcuty = dialog.findViewById(R.id.spinnerFacultyDialogTimeTable);
-        spinnerClass = dialog.findViewById(R.id.spinnerClassDialogTimeTable);
-        spinnerTeacher = dialog.findViewById(R.id.spinnerTeacherDialogTimeTable);
-        spinnerSubject = dialog.findViewById(R.id.spinnerSubjectNameDialogTimeTable);
-        spinnerStart = dialog.findViewById(R.id.spinnerStartDialogTimeTable);
-        spinnerNumber = dialog.findViewById(R.id.spinnerNumberOfLesson);
+        spinnerFacultyDialog = dialog.findViewById(R.id.spinnerFacultyDialogTimeTable);
+        spinnerClassDialog = dialog.findViewById(R.id.spinnerClassDialogTimeTable);
+        spinnerTeacherDialog = dialog.findViewById(R.id.spinnerTeacherDialogTimeTable);
+        spinnerSubjectDialog = dialog.findViewById(R.id.spinnerSubjectNameDialogTimeTable);
+        spinnerStartDialog = dialog.findViewById(R.id.spinnerStartDialogTimeTable);
+        spinnerNumberDialog = dialog.findViewById(R.id.spinnerNumberOfLesson);
+
+        spinnerFaculty = view.findViewById(R.id.spinner_faculty_add_time_table);
+        spinnerClass = view.findViewById(R.id.spinner_class_add_time_table);
 
         // Load spinnerStart
         lessons = getResources().getStringArray(R.array.lessons);
         adapterLessons = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, lessons);
         adapterLessons.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerStart.setAdapter(adapterLessons);
+        spinnerStartDialog.setAdapter(adapterLessons);
 
         // Load spinnerNumber
         numberLessons = getResources().getStringArray(R.array.numberLesson);
         adapterNumberLesson = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, numberLessons);
         adapterNumberLesson.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerNumber.setAdapter(adapterNumberLesson);
+        spinnerNumberDialog.setAdapter(adapterNumberLesson);
+
+        // Load spinnerFalcuty
+        falcutyNames.add("Công nghệ thông tin");
+        falcutyNames.add("Kinh tế");
+        falcutyNames.add("Ô tô");
+        falcutyNames.add("Cơ khí");
+        adapterFalcuty = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, falcutyNames);
+        adapterFalcuty.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerFacultyDialog.setAdapter(adapterFalcuty);
+
+        // Load spinnerClass
+        classNames.add("171101CL1A");
+        classNames.add("171101CL1B");
+        classNames.add("171101CL2A");
+        classNames.add("171101CL2B");
+        adapterClass = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, classNames);
+        adapterClass.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerClassDialog.setAdapter(adapterClass);
+
+        // Load spinnerTeacher
+        teacherNames.add("Nguyen Dang Quang");
+        teacherNames.add("Nguyen Tran Thi Van");
+        teacherNames.add("Tran Cong Tu");
+        teacherNames.add("Nguyen Thanh Phuoc");
+        adapterTeacher = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, teacherNames);
+        adapterTeacher.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerTeacherDialog.setAdapter(adapterTeacher);
+
+        // Load spinnerSubject
+        subjectNames.add("Lap Trinh Di Dong");
+        subjectNames.add("Anh van 4");
+        subjectNames.add("Toan 1");
+        subjectNames.add("Toan 2");
+        adapterSubject = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, subjectNames);
+        adapterSubject.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerSubjectDialog.setAdapter(adapterSubject);
+
+        // Load spinnerFaculty
+        spinnerFaculty.setAdapter(adapterFalcuty);
+
+        // Load spinnerClass
+        spinnerClass.setAdapter(adapterClass);
 
 
-
-
-
-        btnShowDialog.setOnClickListener(v-> {
+        btnShowDialog.setOnClickListener(v -> {
             dialog.show();
         });
 
-        btnClose.setOnClickListener(v-> {
+        btnClose.setOnClickListener(v -> {
             dialog.dismiss();
         });
 
