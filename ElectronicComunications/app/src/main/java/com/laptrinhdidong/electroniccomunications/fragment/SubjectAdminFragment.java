@@ -5,13 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.laptrinhdidong.electroniccomunications.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubjectAdminFragment extends Fragment {
 
@@ -19,6 +24,10 @@ public class SubjectAdminFragment extends Fragment {
     private FloatingActionButton btnShowDialog;
     private Button btnClose, btnSave;
     private EditText edtName, edtCredit;
+
+    private Spinner spinnerFalcutyDialog, spinnerFal;
+    private List<String> falcutyNames = new ArrayList<>();
+    private ArrayAdapter<String> adapterFalcuty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,12 +49,26 @@ public class SubjectAdminFragment extends Fragment {
         btnClose = dialog.findViewById(R.id.btnCloseDialogSubject);
         edtName = dialog.findViewById(R.id.edtSubjectNameDialog);
         edtCredit = dialog.findViewById(R.id.edtCreditDialog);
+        spinnerFalcutyDialog = dialog.findViewById(R.id.spinnerFalDialogAddSubject);
+        spinnerFal = view.findViewById(R.id.spinnerFalSubjectAdmin);
+
+        // Load spinnerFalcuty
+        falcutyNames.add("Công nghệ thông tin");
+        falcutyNames.add("Kinh tế");
+        falcutyNames.add("Ô tô");
+        falcutyNames.add("Cơ khí");
+        adapterFalcuty = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, falcutyNames);
+        adapterFalcuty.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerFalcutyDialog.setAdapter(adapterFalcuty);
+
+        // Load spinnerFal
+        spinnerFal.setAdapter(adapterFalcuty);
 
         btnShowDialog.setOnClickListener(v -> {
             dialog.show();
         });
 
-        btnClose.setOnClickListener(v-> {
+        btnClose.setOnClickListener(v -> {
             dialog.dismiss();
         });
 

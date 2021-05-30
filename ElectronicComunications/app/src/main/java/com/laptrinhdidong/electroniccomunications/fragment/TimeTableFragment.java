@@ -8,12 +8,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.laptrinhdidong.electroniccomunications.R;
+
+import java.util.List;
 
 public class TimeTableFragment extends Fragment {
 
@@ -22,6 +25,8 @@ public class TimeTableFragment extends Fragment {
     private TextView txtDate;
     private Spinner spinnerFalcuty, spinnerClass, spinnerTeacher, spinnerSubject, spinnerStart, spinnerNumber;
     private Button btnSave, btnClose;
+    private String[] lessons, numberLessons;
+    private ArrayAdapter<String> adapterLessons, adapterNumberLesson;
 
 
     @Override
@@ -49,6 +54,22 @@ public class TimeTableFragment extends Fragment {
         spinnerSubject = dialog.findViewById(R.id.spinnerSubjectNameDialogTimeTable);
         spinnerStart = dialog.findViewById(R.id.spinnerStartDialogTimeTable);
         spinnerNumber = dialog.findViewById(R.id.spinnerNumberOfLesson);
+
+        // Load spinnerStart
+        lessons = getResources().getStringArray(R.array.lessons);
+        adapterLessons = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, lessons);
+        adapterLessons.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerStart.setAdapter(adapterLessons);
+
+        // Load spinnerNumber
+        numberLessons = getResources().getStringArray(R.array.numberLesson);
+        adapterNumberLesson = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, numberLessons);
+        adapterNumberLesson.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinnerNumber.setAdapter(adapterNumberLesson);
+
+
+
+
 
         btnShowDialog.setOnClickListener(v-> {
             dialog.show();
