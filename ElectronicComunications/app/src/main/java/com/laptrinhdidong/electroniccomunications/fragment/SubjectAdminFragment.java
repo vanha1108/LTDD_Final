@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.laptrinhdidong.electroniccomunications.R;
 import com.laptrinhdidong.electroniccomunications.adapter.SubjectAdapter;
-import com.laptrinhdidong.electroniccomunications.model.FacultyEntity;
 import com.laptrinhdidong.electroniccomunications.model.SubjectEntity;
 
 import java.util.ArrayList;
@@ -76,6 +76,13 @@ public class SubjectAdminFragment extends Fragment {
         spinnerFalcutyDialog = dialog.findViewById(R.id.spinnerFalDialogAddSubject);
         spinnerFal = view.findViewById(R.id.spinnerFalSubjectAdmin);
         recyclerSubject = view.findViewById(R.id.recyclerSubjectAdmin);
+
+        subjectAdapter = new SubjectAdapter(new SubjectAdapter.OnLongClick() {
+            @Override
+            public void showDialog(SubjectEntity subjectEntity) {
+                showDialog(subjectEntity);
+            }
+        });
 
         btnShowDialog.setOnClickListener(v -> {
             dialog.show();
@@ -216,6 +223,24 @@ public class SubjectAdminFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+    }
+
+    public void showDialog(SubjectEntity subjectEntity) {
+        Dialog dialog = new Dialog(getContext());
+        dialog.setTitle("");
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.dialog_opitons);
+        dialog.show();
+        TextView txtUpdate = dialog.findViewById(R.id.txtUpdateOption);
+        TextView txtDelete = dialog.findViewById(R.id.txtDeleteOption);
+
+        txtUpdate.setOnClickListener(v->{
+
+        });
+
+        txtDelete.setOnClickListener(v->{
+
         });
     }
 

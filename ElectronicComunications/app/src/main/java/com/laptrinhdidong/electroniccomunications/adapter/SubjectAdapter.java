@@ -17,11 +17,20 @@ import java.util.List;
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
 
     private List<SubjectEntity> subjects;
-    Context context;
+    private Context context;
+    private OnLongClick onLongClick;
 
     public SubjectAdapter(List<SubjectEntity> subjectEntities, Context context) {
         this.context = context;
         this.subjects = subjectEntities;
+    }
+
+    public interface OnLongClick {
+        void showDialog(SubjectEntity subjectEntity);
+    }
+
+    public SubjectAdapter(OnLongClick onLongClick) {
+        this.onLongClick = onLongClick;
     }
 
     public void setData(List<SubjectEntity> mListSubject) {
@@ -45,6 +54,14 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         holder.txtName.setText("Name: " + subject.getName());
         holder.txtCredit.setText("Credit: " + subject.getCredit());
         holder.txtMoney.setText("Money/Credit: " + subject.getMoneyPerCredit());
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                onLongClick.showDialog(subject);
+                return true;
+            }
+        });
     }
 
     @Override
