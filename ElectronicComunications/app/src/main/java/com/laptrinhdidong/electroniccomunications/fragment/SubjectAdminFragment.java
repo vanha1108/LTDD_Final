@@ -74,6 +74,45 @@ public class SubjectAdminFragment extends Fragment {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseRoot = firebaseDatabase.getReference();
 
+        loadData(databaseRoot);
+
+        btnShowDialog.setOnClickListener(v -> {
+            dialog.show();
+        });
+
+        btnClose.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        btnSave.setOnClickListener(v -> {
+            String facultyName = spinnerFalcutyDialog.getSelectedItem().toString();
+            String nameSubject = edtName.getText().toString().trim();
+            String sCredit = edtCredit.getText().toString();
+            String sMoney = edtMoney.getText().toString();
+            if (facultyName.equals("") || nameSubject.equals("") || sCredit.equals("") || sMoney.equals("")) {
+                Toast.makeText(getContext(), "Please enter the full information", Toast.LENGTH_LONG).show();
+                return;
+            }
+            try {
+                SubjectEntity subject = new SubjectEntity(facultyName, nameSubject, sCredit, sMoney);
+                databaseRoot.child("subject").push().setValue(subject);
+                Toast.makeText(getContext(), "Add subject successfull", Toast.LENGTH_LONG).show();
+                loadData(databaseRoot);
+                subjectAdapter.notifyDataSetChanged();
+                edtName.setText("");
+                edtCredit.setText("");
+                edtMoney.setText("");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                return;
+            }
+        });
+        return view;
+    }
+
+    public void loadData(DatabaseReference databaseRoot) {
+
         databaseRoot.child("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -128,37 +167,5 @@ public class SubjectAdminFragment extends Fragment {
 
             }
         });
-
-        btnShowDialog.setOnClickListener(v -> {
-            dialog.show();
-        });
-
-        btnClose.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        btnSave.setOnClickListener(v -> {
-            String facultyName = spinnerFalcutyDialog.getSelectedItem().toString();
-            String nameSubject = edtName.getText().toString().trim();
-            String sCredit = edtCredit.getText().toString();
-            String sMoney = edtMoney.getText().toString();
-            if (facultyName.equals("") || nameSubject.equals("") || sCredit.equals("") || sMoney.equals("")) {
-                Toast.makeText(getContext(), "Please enter the full information", Toast.LENGTH_LONG).show();
-                return;
-            }
-            try {
-                SubjectEntity subject = new SubjectEntity(facultyName, nameSubject, sCredit, sMoney);
-                databaseRoot.child("subject").push().setValue(subject);
-                Toast.makeText(getContext(), "Add subject successfull", Toast.LENGTH_LONG).show();
-                edtName.setText("");
-                edtCredit.setText("");
-                edtMoney.setText("");
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                return;
-            }
-        });
-        return view;
     }
 }
