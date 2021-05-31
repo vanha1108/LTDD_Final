@@ -41,7 +41,7 @@ public class FacultyFragment extends Fragment {
 
     DatabaseReference mData;
     private RecyclerView recyclerViewFaculty;
-    private FacultyAdapter adapter ;
+    private FacultyAdapter adapter;
 //    private List<FacultyEntity> mListFaculty;
 //    private FacultyAdapter adapter ;
 
@@ -79,7 +79,6 @@ public class FacultyFragment extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference()
                                 .child("Faculty"), FacultyEntity.class)
                         .build();
-
         adapter = new FacultyAdapter(options);
         recyclerViewFaculty.setAdapter(adapter);
 
@@ -97,8 +96,6 @@ public class FacultyFragment extends Fragment {
 //        recyclerViewFaculty.setLayoutManager(linearLayoutManager);
 //        adapter.setData(mListFaculty);
 //        recyclerViewFaculty.setAdapter(adapter);
-
-
 
 
         btnShow.setOnClickListener(v -> {

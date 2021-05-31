@@ -48,6 +48,24 @@
         android:ems="10"
         android:inputType="number" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="Money on credit" />
+
+    <EditText
+        android:id="@+id/edtMoneyCreditDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:inputType="number" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

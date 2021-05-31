@@ -8,6 +8,7 @@ public class FacultyEntity implements Serializable {
     private String addressDean;
     private String assistantName;
     private String addressAssistant;
+    private String key;
 
     public FacultyEntity() {
     }
@@ -18,6 +19,14 @@ public class FacultyEntity implements Serializable {
         this.addressDean = addressDean;
         this.assistantName = assistantName;
         this.addressAssistant = addressAssistant;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getFacultyName() {

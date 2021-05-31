@@ -1,5 +1,8 @@
 package com.laptrinhdidong.electroniccomunications;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,11 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
 import com.google.android.material.navigation.NavigationView;
-
 import com.laptrinhdidong.electroniccomunications.fragment.ClassFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.FacultyFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.GradeFragment;
@@ -21,7 +20,6 @@ import com.laptrinhdidong.electroniccomunications.fragment.ParentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
-import com.laptrinhdidong.electroniccomunications.fragment.SubjectFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TimeTableFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragment;
