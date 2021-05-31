@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,16 +40,21 @@ public class SubjectAdminFragment extends Fragment {
 
     private Spinner spinnerFalcutyDialog, spinnerFal;
     private List<String> facultyNames = new ArrayList<>();
-    private List<FacultyEntity> facultyEntities = new ArrayList<>();
     private ArrayAdapter<String> adapterFalcuty;
 
     private List<SubjectEntity> subjects = new ArrayList<>();
     private SubjectAdapter subjectAdapter;
     private RecyclerView recyclerSubject;
 
+    private String falName;
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseRoot = firebaseDatabase.getReference();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadData(databaseRoot);
     }
 
     @Override
@@ -70,11 +76,6 @@ public class SubjectAdminFragment extends Fragment {
         spinnerFalcutyDialog = dialog.findViewById(R.id.spinnerFalDialogAddSubject);
         spinnerFal = view.findViewById(R.id.spinnerFalSubjectAdmin);
         recyclerSubject = view.findViewById(R.id.recyclerSubjectAdmin);
-
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseRoot = firebaseDatabase.getReference();
-
-        loadData(databaseRoot);
 
         btnShowDialog.setOnClickListener(v -> {
             dialog.show();
@@ -108,6 +109,20 @@ public class SubjectAdminFragment extends Fragment {
                 return;
             }
         });
+
+        spinnerFal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String name = facultyNames.get(position);
+                reload(name, databaseRoot);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         return view;
     }
 
@@ -116,6 +131,7 @@ public class SubjectAdminFragment extends Fragment {
         databaseRoot.child("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                facultyNames.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String facultyName = dataSnapshot.child("facultyName").getValue(String.class);
                     if (facultyName != "") {
@@ -126,6 +142,9 @@ public class SubjectAdminFragment extends Fragment {
                 adapterFalcuty.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                 spinnerFalcutyDialog.setAdapter(adapterFalcuty);
                 spinnerFal.setAdapter(adapterFalcuty);
+                if (facultyNames != null && facultyNames.size() > 0) {
+                    falName = spinnerFal.getSelectedItem().toString();
+                }
             }
 
             @Override
@@ -137,12 +156,14 @@ public class SubjectAdminFragment extends Fragment {
         databaseRoot.child("subject").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                subjects.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String faculty = dataSnapshot.child("facultyName").getValue(String.class);
                     String subjectName = dataSnapshot.child("name").getValue(String.class);
                     String sCredit = dataSnapshot.child("credit").getValue(String.class);
                     String sMoney = dataSnapshot.child("moneyPerCredit").getValue(String.class);
                     try {
-                        if (subjectName != "") {
+                        if (subjectName != "" && sCredit != "" && sMoney != "" && falName.equals(faculty)) {
                             SubjectEntity subjectEntity = new SubjectEntity(subjectName, sCredit, sMoney);
                             subjects.add(subjectEntity);
                         }
@@ -168,4 +189,34 @@ public class SubjectAdminFragment extends Fragment {
             }
         });
     }
+
+    public void reload(String facultyName, DatabaseReference databaseRoot) {
+        databaseRoot.child("subject").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                subjects.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String faculty = dataSnapshot.child("facultyName").getValue(String.class);
+                    String subjectName = dataSnapshot.child("name").getValue(String.class);
+                    String sCredit = dataSnapshot.child("credit").getValue(String.class);
+                    String sMoney = dataSnapshot.child("moneyPerCredit").getValue(String.class);
+                    try {
+                        if (subjectName != "" && sCredit != "" && sMoney != "" && facultyName.equals(faculty)) {
+                            SubjectEntity subjectEntity = new SubjectEntity(subjectName, sCredit, sMoney);
+                            subjects.add(subjectEntity);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                subjectAdapter.setData(subjects);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
