@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.laptrinhdidong.electroniccomunications.fragment.ClassFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.ClassesFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.FacultyFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.GradeFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.HomeFragment;
@@ -21,8 +22,10 @@ import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.TimeTableFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragmentAdmin;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -79,12 +82,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_class:
                 toolbar.setTitle("Class Information");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ClassFragment()).commit();
+                        new ClassesFragmentAdmin()).commit();
                 break;
             case R.id.nav_teacherinfor:
                 toolbar.setTitle("Teacher Information");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new TeacherFragment()).commit();
+                        new TeacherFragmentAdmin()).commit();
                 break;
             case R.id.nav_parentinfor:
                 toolbar.setTitle("Parent Information");
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_tuition:
                 toolbar.setTitle("Tuition Information");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new TuitionFragment()).commit();
+                        new TuitionFragmentAdmin()).commit();
                 break;
             case R.id.nav_grade:
                 toolbar.setTitle("Grade");

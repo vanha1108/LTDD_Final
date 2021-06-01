@@ -15,20 +15,14 @@ import com.laptrinhdidong.electroniccomunications.model.Tuition;
 
 import java.util.ArrayList;
 
-public class TeacherAdminAdapter extends RecyclerView.Adapter<TeacherAdminAdapter.MyViewHolder> {
+public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Teacher> teachers;
-    private OnLongClick onLongClick;
 
-    public interface OnLongClick {
-        void dialogUpdateDeleteTeacher(Teacher teacher);
-    }
-
-    public TeacherAdminAdapter(Context context, ArrayList<Teacher> teachers, OnLongClick onLongClick) {
+    public TeacherAdapter(Context context, ArrayList<Teacher> teachers) {
         this.context = context;
         this.teachers = teachers;
-        this.onLongClick = onLongClick;
     }
 
     public void setData (ArrayList<Teacher> mListTeachers) {
@@ -58,14 +52,6 @@ public class TeacherAdminAdapter extends RecyclerView.Adapter<TeacherAdminAdapte
         holder.myText7.setText("Gmail: " + teacher.getGmail());
         holder.myText8.setText("Class ID: " + teacher.getClassID());
         holder.myText9.setText("Faculty: " + teacher.getFacultyID());
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onLongClick.dialogUpdateDeleteTeacher(teacher);
-                return true;
-            }
-        });
-
     }
 
     @Override

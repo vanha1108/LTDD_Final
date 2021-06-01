@@ -9,29 +9,50 @@
     android:layout_marginRight="10dp">
 
     <TextView
-        android:id="@+id/txtNameTeacher"
+        android:id="@+id/txtFirstNameTeacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name: " />
+        android:text="First Name: " />
     <TextView
-        android:id="@+id/txtDateOfBirthTeacher"
+        android:id="@+id/txtLastNameTeacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date of Birth: "/>
+        android:text="Last Name: "/>
     <TextView
-        android:id="@+id/txtSexTeacher"
+        android:id="@+id/textDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date of birth: "/>
+    <TextView
+        android:id="@+id/txtSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sex: "/>
     <TextView
-        android:id="@+id/txtPhoneTeacher"
+        android:id="@+id/txtAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phone: "/>
+        android:text="Age: "/>
+
     <TextView
-        android:id="@+id/txtMailTeacher"
+        android:id="@+id/txtPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email: "/>
+        android:text="Phone: " />
+    <TextView
+        android:id="@+id/txtGmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gmail: " />
+    <TextView
+        android:id="@+id/txtClassID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class ID: " />
+    <TextView
+        android:id="@+id/txtFaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faculty: " />
 
 </LinearLayout>

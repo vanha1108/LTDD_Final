@@ -16,21 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ClassesAdminAdapter extends RecyclerView.Adapter<ClassesAdminAdapter.MyViewHolder> {
+public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Classes> newClasses;
-    private OnLongClick onLongClick;
 
-    public ClassesAdminAdapter(Context context, ArrayList<Classes> newClasses, OnLongClick onLongClick) {
+
+    public ClassAdapter(Context context, ArrayList<Classes> newClasses) {
         this.context = context;
         this.newClasses = newClasses;
-        this.onLongClick = onLongClick;
+
     }
 
-    public interface OnLongClick {
-        void showDialogUpdateDelete(Classes newClass);
-    }
+
 
     public void setData (ArrayList<Classes> mListClasses) {
         newClasses = mListClasses;
@@ -54,13 +52,6 @@ public class ClassesAdminAdapter extends RecyclerView.Adapter<ClassesAdminAdapte
         holder.myText1.setText(Integer.toString(newClass.getClassID()));
         holder.myText2.setText(newClass.getClassName());
         holder.myText3.setText(Integer.toString(newClass.getNos()));
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onLongClick.showDialogUpdateDelete(newClass);
-                return true;
-            }
-        });
 
     }
 

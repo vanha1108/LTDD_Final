@@ -14,14 +14,14 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:text="Add Teacher"
+        android:text="Edit Teacher"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:hint="Enter Teacher First Name"
-        android:id="@+id/edtAddFirstNameTeacher"
+        android:id="@+id/edtEdtFirstNameTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -37,7 +37,7 @@
 
     <EditText
         android:hint="Enter Teacher Last Name:"
-        android:id="@+id/edtAddTeacherLastName"
+        android:id="@+id/edtEdtTeacherLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/edtAddDoB"
+        android:id="@+id/edtEdtDoB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/edtAddSexTeacher"
+        android:id="@+id/edtEdtSexTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/edtAddAgeTeacher"
+        android:id="@+id/edtEdtAgeTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/edtAddPhoneTeacher"
+        android:id="@+id/edtEdtPhoneTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
     <EditText
-        android:id="@+id/edtAddMailTeacher"
+        android:id="@+id/edtEdtMailTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -135,7 +135,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
     <EditText
-        android:id="@+id/edtAddClassIDTeacher"
+        android:id="@+id/edtEdtClassIDTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -151,7 +151,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
     <EditText
-        android:id="@+id/edtAddFacultyTeacher"
+        android:id="@+id/edtEdtFacultyTeacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -168,21 +168,21 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/btnAddTeacher"
+        android:id="@+id/btnEdtEdtTeacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="#CCCCCC"
-        android:text="Add"
+        android:text="Save"
         android:textAllCaps="false"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtAddFacultyTeacher" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEdtFacultyTeacher" />
 
     <Button
-        android:id="@+id/btnCloseTeacher"
+        android:id="@+id/btEdtCloseTeacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -193,5 +193,5 @@
         android:textAllCaps="false"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtAddFacultyTeacher" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEdtFacultyTeacher" />
 </androidx.constraintlayout.widget.ConstraintLayout>

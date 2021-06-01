@@ -13,26 +13,21 @@ import com.laptrinhdidong.electroniccomunications.R;
 import com.laptrinhdidong.electroniccomunications.model.Tuition;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class TuitionAdminAdapter extends RecyclerView.Adapter<TuitionAdminAdapter.MyViewHolder> {
+
+public class TuitionAdapter extends RecyclerView.Adapter<TuitionAdapter.MyViewHolder> {
 
 
     ArrayList<Tuition> tuitions;
     Context context;
-    private OnLongClick onLongClick;
 
-    public TuitionAdminAdapter(Context context, ArrayList<Tuition> tuitions, OnLongClick onLongClick) {
+
+    public TuitionAdapter(Context context, ArrayList<Tuition> tuitions) {
         this.tuitions = tuitions;
         this.context = context;
-        this.onLongClick = onLongClick;
     }
 
-    public interface OnLongClick {
-        void showDialogUpdateDelete(Tuition tuition
-        );
-    }
 
     public void setData (ArrayList<Tuition> mListTuitions) {
         tuitions = mListTuitions;
@@ -56,13 +51,6 @@ public class TuitionAdminAdapter extends RecyclerView.Adapter<TuitionAdminAdapte
         holder.myText1.setText(tuition.getSubject());
         holder.myText2.setText(Integer.toString(tuition.getPrice()));
         holder.myText3.setText(Integer.toString(tuition.getNoC()));
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onLongClick.showDialogUpdateDelete(tuition);
-                return true;
-            }
-        });
 
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/spinnerAddClass"
+        android:id="@+id/spinnerClass"
         android:layout_width="250dp"
         android:layout_height="49dp" />
 
@@ -39,24 +39,11 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/classAdminRecyclerView"
+        android:id="@+id/classRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="519dp"
         android:layout_marginTop="100dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnShowDialogAddClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#FF1963"
-        android:src="@drawable/plus"
-        app:tint="#a4ff48" />
 
 
 
