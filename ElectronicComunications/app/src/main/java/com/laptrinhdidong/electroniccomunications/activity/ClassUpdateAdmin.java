@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class
 ClassUpdateAdmin extends AppCompatActivity {
 
-    EditText edtNo, edtClassName, edtNoS;
+    EditText edtNo, edtClassName, edtNoS, edtFacultyName;
     Button btnUpdate, btnClose;
     Classes newClass;
     DatabaseReference mData;
@@ -36,6 +36,7 @@ ClassUpdateAdmin extends AppCompatActivity {
         edtNo = (EditText)findViewById(R.id.edtEditClassID);
         edtClassName = (EditText)findViewById(R.id.edtEditClassName);
         edtNoS = (EditText)findViewById(R.id.edtEditClassNoS);
+        edtFacultyName = (EditText)findViewById(R.id.edtEditClassFacultyName);
         btnUpdate = (Button)findViewById(R.id.btnAddClass);
         btnClose = (Button)findViewById(R.id.btnCloseClass);
 
@@ -45,6 +46,7 @@ ClassUpdateAdmin extends AppCompatActivity {
             edtNo.setText(Integer.toString(newClass.getClassID()));
             edtClassName.setText(newClass.getClassName());
             edtNoS.setText(Integer.toString(newClass.getNos()));
+            edtFacultyName.setText(newClass.getFacultyName());
         }
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -64,12 +66,12 @@ ClassUpdateAdmin extends AppCompatActivity {
 
     private void updateClass() {
         String No = edtNo.getText().toString();
-
         String className = edtClassName.getText().toString();
         String NoS = edtNoS.getText().toString();
+        String facultyName = edtFacultyName.getText().toString();
 
 
-        if(TextUtils.isEmpty(No) || TextUtils.isEmpty(className) || TextUtils.isEmpty(NoS)) {
+        if(TextUtils.isEmpty(No) || TextUtils.isEmpty(className) || TextUtils.isEmpty(NoS) || TextUtils.isEmpty(facultyName)) {
             Toast.makeText(ClassUpdateAdmin.this, "Empty fields!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -81,6 +83,7 @@ ClassUpdateAdmin extends AppCompatActivity {
         hashMap.put("classID", finalNo);
         hashMap.put("className", className);
         hashMap.put("nos", finalNoS);
+        hashMap.put("facultyName", facultyName);
 
         mData.child("class").child(No).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
             @Override

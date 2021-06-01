@@ -79,7 +79,7 @@ public class Teacher implements Serializable {
 
 
 
-    public Teacher(String firstName, String lastName, String sex, String age, String phone, String gmail, String classID, String facultyID, String doB) {
+    public Teacher(String firstName, String lastName, String doB, String sex, String age, String phone, String gmail, String classID, String facultyID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;

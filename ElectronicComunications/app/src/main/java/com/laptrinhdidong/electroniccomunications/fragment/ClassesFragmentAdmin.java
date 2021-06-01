@@ -44,7 +44,7 @@ public class ClassesFragmentAdmin extends Fragment {
     private static final int MY_REQUEST_CODE = 10;
     FloatingActionButton fltAddClassAdmin;
     Button btnAddClass, btnCloseClass;
-    EditText edtAddClass, edtAddClassName, edtAddClassNoS;
+    EditText edtAddClass, edtAddClassName, edtAddClassNoS, edtAddClassFacultyName;
     DatabaseReference mData;
     ArrayList<Classes> newClasses;
 
@@ -102,12 +102,14 @@ public class ClassesFragmentAdmin extends Fragment {
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(true);
 
+        // anh xa
         fltAddClassAdmin = view.findViewById(R.id.btnShowDialogAddClass);
         btnAddClass = dialog.findViewById(R.id.btnAddClass);
         edtAddClass = dialog.findViewById(R.id.edtAddClassID);
         edtAddClassName = dialog.findViewById(R.id.edtAddClassName);
         edtAddClassNoS = dialog.findViewById(R.id.edtAddClassNoS);
         btnCloseClass = dialog.findViewById(R.id.btnCloseClass);
+        edtAddClassFacultyName = dialog.findViewById(R.id.edtAddClassFacultyName);
 
 
         fltAddClassAdmin.setOnClickListener(new View.OnClickListener() {
@@ -120,12 +122,14 @@ public class ClassesFragmentAdmin extends Fragment {
         btnAddClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtAddClass.getText().toString().equals("") || edtAddClassName.getText().toString().equals("") || edtAddClassNoS.getText().toString().equals("")) {
+                if (edtAddClass.getText().toString().equals("") || edtAddClassName.getText().toString().equals("")
+                        || edtAddClassNoS.getText().toString().equals("") || edtAddClassFacultyName.getText().toString().equals("")) {
                     Toast.makeText(getContext(), "Empty fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                Classes newClass = new Classes(Integer.parseInt(edtAddClass.getText().toString()), edtAddClassName.getText().toString().trim(), Integer.parseInt(edtAddClassNoS.getText().toString()));
+                Classes newClass = new Classes(Integer.parseInt(edtAddClass.getText().toString()), edtAddClassName.getText().toString().trim(),
+                        Integer.parseInt(edtAddClassNoS.getText().toString()), edtAddClassFacultyName.getText().toString().trim());
                 mData.child("class").child(edtAddClass.getText().toString()).setValue(newClass);
                 Toast.makeText(getContext(), "Add class successfully!", Toast.LENGTH_SHORT).show();
                 loadData();

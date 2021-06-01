@@ -7,6 +7,7 @@ public class Classes implements Serializable {
     private Integer classID;
     private String className;
     private Integer Nos;
+    private String facultyName;
 
     public Integer getClassID() {
         return classID;
@@ -32,10 +33,19 @@ public class Classes implements Serializable {
         Nos = nos;
     }
 
-    public Classes(Integer classID, String className, Integer nos) {
+    public Classes(Integer classID, String className, Integer nos, String facultyName) {
         this.classID = classID;
         this.className = className;
         Nos = nos;
+        this.facultyName = facultyName;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
     }
 
     public Classes() {

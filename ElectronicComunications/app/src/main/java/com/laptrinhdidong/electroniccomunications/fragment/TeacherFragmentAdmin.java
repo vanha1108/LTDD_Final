@@ -32,7 +32,6 @@ import com.laptrinhdidong.electroniccomunications.activity.TeacherUpdateAdmin;
 import com.laptrinhdidong.electroniccomunications.adapter.TeacherAdminAdapter;
 import com.laptrinhdidong.electroniccomunications.R;
 import com.laptrinhdidong.electroniccomunications.model.Teacher;
-import com.laptrinhdidong.electroniccomunications.model.Tuition;
 
 
 import java.util.ArrayList;
