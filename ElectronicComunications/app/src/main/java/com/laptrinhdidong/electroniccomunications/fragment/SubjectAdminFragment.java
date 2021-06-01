@@ -1,6 +1,7 @@
 package com.laptrinhdidong.electroniccomunications.fragment;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +48,8 @@ public class SubjectAdminFragment extends Fragment {
     private SubjectAdapter subjectAdapter;
     private RecyclerView recyclerSubject;
 
-    private String falName;
+    private String falName = "";
+    private String subjectKey = "";
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseRoot = firebaseDatabase.getReference();
@@ -77,10 +80,10 @@ public class SubjectAdminFragment extends Fragment {
         spinnerFal = view.findViewById(R.id.spinnerFalSubjectAdmin);
         recyclerSubject = view.findViewById(R.id.recyclerSubjectAdmin);
 
-        subjectAdapter = new SubjectAdapter(new SubjectAdapter.OnLongClick() {
+        subjectAdapter = new SubjectAdapter(subjects, getContext(), new SubjectAdapter.HolderLongClick() {
             @Override
             public void showDialog(SubjectEntity subjectEntity) {
-                showDialog(subjectEntity);
+                showDialogUpdateAndDelete(subjectEntity);
             }
         });
 
@@ -102,9 +105,8 @@ public class SubjectAdminFragment extends Fragment {
                 return;
             }
             try {
-                SubjectEntity subject = new SubjectEntity(facultyName, nameSubject, sCredit, sMoney);
-                databaseRoot.child("subject").push().setValue(subject);
-                Toast.makeText(getContext(), "Add subject successfull", Toast.LENGTH_LONG).show();
+                SubjectEntity subject = new SubjectEntity(subjectKey, facultyName, nameSubject, sCredit, sMoney);
+                handlerSubject(subject);
                 loadData(databaseRoot);
                 subjectAdapter.notifyDataSetChanged();
                 edtName.setText("");
@@ -165,13 +167,14 @@ public class SubjectAdminFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 subjects.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String key = dataSnapshot.getKey();
                     String faculty = dataSnapshot.child("facultyName").getValue(String.class);
                     String subjectName = dataSnapshot.child("name").getValue(String.class);
                     String sCredit = dataSnapshot.child("credit").getValue(String.class);
                     String sMoney = dataSnapshot.child("moneyPerCredit").getValue(String.class);
                     try {
-                        if (subjectName != "" && sCredit != "" && sMoney != "" && falName.equals(faculty)) {
-                            SubjectEntity subjectEntity = new SubjectEntity(subjectName, sCredit, sMoney);
+                        if (key != "" && subjectName != "" && sCredit != "" && sMoney != "" && falName.equals(faculty)) {
+                            SubjectEntity subjectEntity = new SubjectEntity(key, faculty, subjectName, sCredit, sMoney);
                             subjects.add(subjectEntity);
                         }
                     } catch (Exception e) {
@@ -184,7 +187,7 @@ public class SubjectAdminFragment extends Fragment {
                 spinnerFal.setAdapter(adapterFalcuty);
 
                 // Load recyclerView
-                subjectAdapter = new SubjectAdapter(subjects, getContext());
+                subjectAdapter.setData(subjects);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
                 recyclerSubject.setLayoutManager(linearLayoutManager);
                 recyclerSubject.setAdapter(subjectAdapter);
@@ -203,13 +206,14 @@ public class SubjectAdminFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 subjects.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String key = dataSnapshot.getKey();
                     String faculty = dataSnapshot.child("facultyName").getValue(String.class);
                     String subjectName = dataSnapshot.child("name").getValue(String.class);
                     String sCredit = dataSnapshot.child("credit").getValue(String.class);
                     String sMoney = dataSnapshot.child("moneyPerCredit").getValue(String.class);
                     try {
                         if (subjectName != "" && sCredit != "" && sMoney != "" && facultyName.equals(faculty)) {
-                            SubjectEntity subjectEntity = new SubjectEntity(subjectName, sCredit, sMoney);
+                            SubjectEntity subjectEntity = new SubjectEntity(key, faculty, subjectName, sCredit, sMoney);
                             subjects.add(subjectEntity);
                         }
                     } catch (Exception e) {
@@ -226,22 +230,56 @@ public class SubjectAdminFragment extends Fragment {
         });
     }
 
-    public void showDialog(SubjectEntity subjectEntity) {
-        Dialog dialog = new Dialog(getContext());
-        dialog.setTitle("");
-        dialog.setCancelable(true);
-        dialog.setContentView(R.layout.dialog_opitons);
-        dialog.show();
-        TextView txtUpdate = dialog.findViewById(R.id.txtUpdateOption);
-        TextView txtDelete = dialog.findViewById(R.id.txtDeleteOption);
-
-        txtUpdate.setOnClickListener(v->{
-
-        });
-
-        txtDelete.setOnClickListener(v->{
-
-        });
+    public void handlerSubject(SubjectEntity subjectEntity) {
+        if (subjectEntity.getKey() == "") {
+            databaseRoot.child("subject").push().setValue(subjectEntity);
+            Toast.makeText(getContext(), "Add subject successfull", Toast.LENGTH_LONG).show();
+        } else {
+            databaseRoot.child("subject").child(subjectEntity.getKey()).setValue(subjectEntity);
+            subjectKey = "";
+            Toast.makeText(getContext(), "Update subject successfull", Toast.LENGTH_LONG).show();
+        }
     }
 
+    public void showDialogUpdateAndDelete(SubjectEntity subjectEntity) {
+        Dialog dialogOption = new Dialog(getContext());
+        dialogOption.setTitle("");
+        dialogOption.setCancelable(true);
+        dialogOption.setContentView(R.layout.dialog_opitons);
+        dialogOption.show();
+        TextView txtUpdate = dialogOption.findViewById(R.id.txtUpdateOption);
+        TextView txtDelete = dialogOption.findViewById(R.id.txtDeleteOption);
+
+        txtUpdate.setOnClickListener(v -> {
+            dialogOption.dismiss();
+
+            // Set data
+            edtName.setText(subjectEntity.getName());
+            edtCredit.setText(subjectEntity.getCredit());
+            edtMoney.setText(subjectEntity.getMoneyPerCredit());
+            subjectKey = subjectEntity.getKey();
+
+            adapterFalcuty.notifyDataSetChanged();
+            int index = facultyNames.indexOf(subjectEntity.getFacultyName());
+            spinnerFalcutyDialog.setSelection(index);
+            dialog.show();
+        });
+
+        txtDelete.setOnClickListener(v -> {
+            dialogOption.dismiss();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Confirm");
+            builder.setMessage("Are you sure you want to delete subject " + subjectEntity.getName());
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    databaseRoot.child("subject").child(subjectEntity.getKey()).removeValue();
+                    Toast.makeText(getContext(), "Delete subject " + subjectEntity.getName() + " successfull", Toast.LENGTH_LONG).show();
+                    reload(subjectEntity.getFacultyName(), databaseRoot);
+                }
+            });
+            builder.setNegativeButton("No", null);
+            builder.show();
+        });
+    }
 }

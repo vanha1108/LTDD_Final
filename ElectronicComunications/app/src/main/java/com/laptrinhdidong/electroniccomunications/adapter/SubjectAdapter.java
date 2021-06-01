@@ -17,26 +17,33 @@ import java.util.List;
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
 
     private List<SubjectEntity> subjects;
-    private Context context;
-    private OnLongClick onLongClick;
+    Context context;
+    private HolderLongClick holderLongClick;
 
     public SubjectAdapter(List<SubjectEntity> subjectEntities, Context context) {
         this.context = context;
         this.subjects = subjectEntities;
     }
 
-    public interface OnLongClick {
-        void showDialog(SubjectEntity subjectEntity);
+    public SubjectAdapter(List<SubjectEntity> subjectEntities, Context context, HolderLongClick holderLongClick) {
+        this.context = context;
+        this.subjects = subjectEntities;
+        this.holderLongClick = holderLongClick;
     }
 
-    public SubjectAdapter(OnLongClick onLongClick) {
-        this.onLongClick = onLongClick;
+    public SubjectAdapter(HolderLongClick holderLongClick) {
+        this.holderLongClick = holderLongClick;
     }
 
     public void setData(List<SubjectEntity> mListSubject) {
         subjects = mListSubject;
         notifyDataSetChanged();
     }
+
+    public interface HolderLongClick {
+        void showDialog(SubjectEntity subjectEntity);
+    }
+
 
     @NonNull
     @Override
@@ -54,11 +61,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         holder.txtName.setText("Name: " + subject.getName());
         holder.txtCredit.setText("Credit: " + subject.getCredit());
         holder.txtMoney.setText("Money/Credit: " + subject.getMoneyPerCredit());
-
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                onLongClick.showDialog(subject);
+                holderLongClick.showDialog(subject);
                 return true;
             }
         });
@@ -74,12 +80,14 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
 
     public class SubjectViewHolder extends RecyclerView.ViewHolder {
         private TextView txtName, txtCredit, txtMoney;
+        View mView;
 
         public SubjectViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.txtSubjectNameAdmin);
             txtCredit = itemView.findViewById(R.id.txtSubjectCreditAdmin);
             txtMoney = itemView.findViewById(R.id.txtSubjectMoneyAdmin);
+            mView = itemView;
         }
     }
 }

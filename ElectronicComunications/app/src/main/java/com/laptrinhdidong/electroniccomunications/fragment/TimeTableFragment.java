@@ -2,9 +2,6 @@ package com.laptrinhdidong.electroniccomunications.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +10,20 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.laptrinhdidong.electroniccomunications.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TimeTableFragment extends Fragment {
@@ -30,15 +37,25 @@ public class TimeTableFragment extends Fragment {
     private String[] lessons, numberLessons;
     private ArrayAdapter<String> adapterLessons, adapterNumberLesson, adapterFalcuty, adapterClass, adapterTeacher, adapterSubject;
 
-    private List<String> falcutyNames = new ArrayList<>();
+    private List<String> facultyNames = new ArrayList<>();
     private List<String> classNames = new ArrayList<>();
     private List<String> teacherNames = new ArrayList<>();
     private List<String> subjectNames = new ArrayList<>();
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseRoot = firebaseDatabase.getReference();
+
+    private String facultyName = "";
+    private String className = "";
+
+    private Calendar calendar;
+    private SimpleDateFormat spdf = new SimpleDateFormat("dd/MM/yyyy");
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadData(databaseRoot);
     }
 
     @Override
@@ -65,6 +82,10 @@ public class TimeTableFragment extends Fragment {
         spinnerFaculty = view.findViewById(R.id.spinner_faculty_add_time_table);
         spinnerClass = view.findViewById(R.id.spinner_class_add_time_table);
 
+        calendar = Calendar.getInstance();
+        txtDate.setText(spdf.format(calendar.getTime()));
+
+
         // Load spinnerStart
         lessons = getResources().getStringArray(R.array.lessons);
         adapterLessons = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, lessons);
@@ -77,49 +98,6 @@ public class TimeTableFragment extends Fragment {
         adapterNumberLesson.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerNumberDialog.setAdapter(adapterNumberLesson);
 
-        // Load spinnerFalcuty
-        falcutyNames.add("Công nghệ thông tin");
-        falcutyNames.add("Kinh tế");
-        falcutyNames.add("Ô tô");
-        falcutyNames.add("Cơ khí");
-        adapterFalcuty = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, falcutyNames);
-        adapterFalcuty.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerFacultyDialog.setAdapter(adapterFalcuty);
-
-        // Load spinnerClass
-        classNames.add("171101CL1A");
-        classNames.add("171101CL1B");
-        classNames.add("171101CL2A");
-        classNames.add("171101CL2B");
-        adapterClass = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, classNames);
-        adapterClass.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerClassDialog.setAdapter(adapterClass);
-
-        // Load spinnerTeacher
-        teacherNames.add("Nguyen Dang Quang");
-        teacherNames.add("Nguyen Tran Thi Van");
-        teacherNames.add("Tran Cong Tu");
-        teacherNames.add("Nguyen Thanh Phuoc");
-        adapterTeacher = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, teacherNames);
-        adapterTeacher.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerTeacherDialog.setAdapter(adapterTeacher);
-
-        // Load spinnerSubject
-        subjectNames.add("Lap Trinh Di Dong");
-        subjectNames.add("Anh van 4");
-        subjectNames.add("Toan 1");
-        subjectNames.add("Toan 2");
-        adapterSubject = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, subjectNames);
-        adapterSubject.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinnerSubjectDialog.setAdapter(adapterSubject);
-
-        // Load spinnerFaculty
-        spinnerFaculty.setAdapter(adapterFalcuty);
-
-        // Load spinnerClass
-        spinnerClass.setAdapter(adapterClass);
-
-
         btnShowDialog.setOnClickListener(v -> {
             dialog.show();
         });
@@ -129,5 +107,100 @@ public class TimeTableFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void loadData(DatabaseReference databaseRoot) {
+        databaseRoot.child("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                facultyNames.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String falName = dataSnapshot.child("facultyName").getValue(String.class);
+                    if (falName != "") {
+                        facultyNames.add(falName);
+                    }
+                }
+                adapterFalcuty = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, facultyNames);
+                adapterFalcuty.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinnerFaculty.setAdapter(adapterFalcuty);
+                spinnerFacultyDialog.setAdapter(adapterFalcuty);
+                if (facultyNames != null && facultyNames.size() > 0) {
+                    facultyName = spinnerFaculty.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        databaseRoot.child("class").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                classNames.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String clName = dataSnapshot.child("className").getValue(String.class);
+                    if (clName != "") {
+                        classNames.add(clName);
+                    }
+                }
+                adapterClass = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, classNames);
+                adapterClass.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinnerClass.setAdapter(adapterClass);
+                spinnerClassDialog.setAdapter(adapterClass);
+                if (classNames != null && classNames.size() > 0) {
+                    className = spinnerClass.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseRoot.child("teacher").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                teacherNames.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String firstName = dataSnapshot.child("firstName").getValue(String.class);
+                    String lastName = dataSnapshot.child("lastName").getValue(String.class);
+                    String techName = firstName + " " + lastName;
+                    if (techName != "") {
+                        teacherNames.add(techName);
+                    }
+                }
+                adapterTeacher = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, teacherNames);
+                adapterTeacher.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinnerTeacherDialog.setAdapter(adapterTeacher);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseRoot.child("subject").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                subjectNames.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String subName = dataSnapshot.child("name").getValue(String.class);
+                    if (subName != "") {
+                        subjectNames.add(subName);
+                    }
+                }
+                adapterSubject = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, subjectNames);
+                adapterSubject.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinnerSubjectDialog.setAdapter(adapterSubject);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class SubjectEntity implements Serializable {
 
+    private String key;
     private String facultyName;
     private String name;
     private String credit;
@@ -23,6 +24,22 @@ public class SubjectEntity implements Serializable {
         this.name = name;
         this.credit = credit;
         this.moneyPerCredit = moneyPerCredit;
+    }
+
+    public SubjectEntity(String key, String facultyName, String name, String credit, String moneyPerCredit) {
+        this.key = key;
+        this.facultyName = facultyName;
+        this.name = name;
+        this.credit = credit;
+        this.moneyPerCredit = moneyPerCredit;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getFacultyName() {

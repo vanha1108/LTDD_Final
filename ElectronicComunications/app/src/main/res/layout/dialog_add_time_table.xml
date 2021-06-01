@@ -7,82 +7,83 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txtDateDialogTimeTable"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="20dp" />
 
         <ImageButton
             android:id="@+id/btnShowCalenderTimeTable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp" />
+            android:src="@drawable/calendar" />
     </LinearLayout>
 
     <Spinner
         android:id="@+id/spinnerFacultyDialogTimeTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp" />
 
     <Spinner
         android:id="@+id/spinnerClassDialogTimeTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp" />
 
     <Spinner
         android:id="@+id/spinnerTeacherDialogTimeTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp" />
 
     <Spinner
         android:id="@+id/spinnerSubjectNameDialogTimeTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="end"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:layout_gravity="end">
+        android:orientation="horizontal">
 
         <Spinner
             android:id="@+id/spinnerStartDialogTimeTable"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp" />
 
         <Spinner
             android:id="@+id/spinnerNumberOfLesson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity=""/>
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 
@@ -114,9 +115,4 @@
             android:textAllCaps="false" />
 
     </LinearLayout>
-
-
-
-
-
 </LinearLayout>
