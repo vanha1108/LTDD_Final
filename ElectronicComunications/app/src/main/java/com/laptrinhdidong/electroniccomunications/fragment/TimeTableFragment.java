@@ -454,9 +454,6 @@ public class TimeTableFragment extends Fragment {
         facultyName = "";
         className = "";
         facultyName = spinnerFaculty.getSelectedItem().toString();
-        if (spinnerClass.getSelectedItem() != null) {
-            className = spinnerClass.getSelectedItem().toString();
-        }
         databaseRoot.child("class").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -470,6 +467,9 @@ public class TimeTableFragment extends Fragment {
                 }
                 if (adapterClass != null) {
                     adapterClass.notifyDataSetChanged();
+                    if (classNames != null && classNames.size() > 0) {
+                        className = classNames.get(0);
+                    }
                 }
             }
 
