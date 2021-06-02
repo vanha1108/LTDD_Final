@@ -19,6 +19,7 @@ import com.laptrinhdidong.electroniccomunications.fragment.LogOutFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ParentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.StudentFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.TestScheduleFragment;
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_studentinfor:
                 toolbar.setTitle("Student Information");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new StudentFragment()).commit();
+                        new StudentFragmentAdmin()).commit();
                 break;
             case R.id.nav_tuition:
                 toolbar.setTitle("Tuition Information");
