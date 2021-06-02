@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHome"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is fragment home"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"/>
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="5dp" />
+
 </RelativeLayout>

@@ -64,19 +64,6 @@ public class HomeAdminActivity extends AppCompatActivity implements NavigationVi
                     new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
-
-
-        Notification notification = new Notification("Notification 1", "This is content of notification 1");
-        notifications.add(notification);
-        Notification notification2 = new Notification("Notification 2", "This is content of notification 2");
-        notifications.add(notification2);
-        Notification notification3 = new Notification("Notification 3", "This is content of notification 3");
-        notifications.add(notification3);
-
-        notificationAdapter = new NotificationAdapter(notifications, this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        recyclerHomeAdmin.setLayoutManager(linearLayoutManager);
-        recyclerHomeAdmin.setAdapter(notificationAdapter);
     }
 
     @Override
