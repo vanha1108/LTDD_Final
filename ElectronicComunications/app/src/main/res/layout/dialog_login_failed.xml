@@ -5,23 +5,24 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
-    android:padding="10dp"
+    android:layout_marginRight="10dp"
     android:orientation="vertical"
-    android:layout_marginRight="10dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/txtDialogLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Login Failed, Check Your Login Details"
         android:textColor="#0B0B0B"
         android:textSize="50dp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:textStyle="bold" />
+
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="243dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="end">
 
         <Button
