@@ -13,6 +13,15 @@ public class FacultyEntity implements Serializable {
     public FacultyEntity() {
     }
 
+    public FacultyEntity(String key, String facultyName, String deanName, String addressDean, String assistantName, String addressAssistant) {
+        this.facultyName = facultyName;
+        this.deanName = deanName;
+        this.addressDean = addressDean;
+        this.assistantName = assistantName;
+        this.addressAssistant = addressAssistant;
+        this.key = key;
+    }
+
     public FacultyEntity(String facultyName, String deanName, String addressDean, String assistantName, String addressAssistant) {
         this.facultyName = facultyName;
         this.deanName = deanName;

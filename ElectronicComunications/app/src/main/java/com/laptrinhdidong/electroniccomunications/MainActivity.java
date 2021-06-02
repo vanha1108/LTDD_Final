@@ -11,9 +11,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.laptrinhdidong.electroniccomunications.fragment.ClassFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ClassesFragmentAdmin;
-import com.laptrinhdidong.electroniccomunications.fragment.FacultyFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.FacultyAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.GradeFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.HomeFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.LogOutFragment;
@@ -21,10 +20,8 @@ import com.laptrinhdidong.electroniccomunications.fragment.ParentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
-import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.TimeTableFragment;
-import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragmentAdmin;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_facultyinfor:
                 toolbar.setTitle("Faculty Information");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new FacultyFragment()).commit();
+                        new FacultyAdminFragment()).commit();
                 break;
             case R.id.nav_class:
                 toolbar.setTitle("Class Information");
