@@ -136,7 +136,6 @@ public class SubjectAdminFragment extends Fragment {
     }
 
     public void loadData(DatabaseReference databaseRoot) {
-
         databaseRoot.child("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -58,7 +58,6 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
-        <item>6</item>
         <item>7</item>
         <item>8</item>
         <item>9</item>
@@ -73,6 +72,24 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+    </string-array>
+
+    <string-array name="rooms">
+        <item>A1-101</item>
+        <item>A1-102</item>
+        <item>A1-103</item>
+        <item>A2-101</item>
+        <item>A2-102</item>
+        <item>A2-103</item>
+        <item>A3-101</item>
+        <item>A3-102</item>
+        <item>A3-103</item>
+        <item>A4-101</item>
+        <item>A4-102</item>
+        <item>A4-103</item>
+        <item>A5-101</item>
+        <item>A5-102</item>
+        <item>A5-103</item>
     </string-array>
 
 </resources>
