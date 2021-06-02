@@ -1,43 +1,105 @@
 package com.laptrinhdidong.electroniccomunications.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TestScheduleEntity implements Serializable {
-    private int id;
-    private String subject;
-    private int room;
-    private Date date;
+public class TestScheduleEntity {
 
-    public int getId() {
-        return id;
+    private String key;
+    private String className;
+    private String teacherName;
+    private String subjectName;
+    private String roomName;
+    private String startLesson;
+    private String numberLesson;
+    private String date;
+
+    public TestScheduleEntity() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public TestScheduleEntity(String key, String className, String teacherName, String subjectName, String roomName,
+                              String startLesson, String numberLesson, String date) {
+        this.key = key;
+        this.className = className;
+        this.teacherName = teacherName;
+        this.subjectName = subjectName;
+        this.roomName = roomName;
+        this.startLesson = startLesson;
+        this.numberLesson = numberLesson;
+        this.date = date;
     }
 
-    public String getSubject() {
-        return subject;
+    public TestScheduleEntity(String className, String teacherName, String subjectName, String roomName, String startLesson,
+                              String numberLesson, String date) {
+        this.className = className;
+        this.teacherName = teacherName;
+        this.subjectName = subjectName;
+        this.roomName = roomName;
+        this.startLesson = startLesson;
+        this.numberLesson = numberLesson;
+        this.date = date;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public String getKey() {
+        return key;
     }
 
-    public int getRoom() {
-        return room;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public void setRoom(int room) {
-        this.room = room;
+    public String getClassName() {
+        return className;
     }
 
-    public Date getDate() {
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public String getStartLesson() {
+        return startLesson;
+    }
+
+    public void setStartLesson(String startLesson) {
+        this.startLesson = startLesson;
+    }
+
+    public String getNumberLesson() {
+        return numberLesson;
+    }
+
+    public void setNumberLesson(String numberLesson) {
+        this.numberLesson = numberLesson;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
