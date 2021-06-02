@@ -1,5 +1,6 @@
 package com.laptrinhdidong.electroniccomunications.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,48 +15,90 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.laptrinhdidong.electroniccomunications.R;
 import com.laptrinhdidong.electroniccomunications.model.FacultyEntity;
 
-public class FacultyAdapter extends FirebaseRecyclerAdapter<FacultyEntity, FacultyAdapter.myviewholder>{
+import java.util.List;
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public FacultyAdapter(@NonNull FirebaseRecyclerOptions<FacultyEntity> options) {
-        super(options);
+public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.FacultyViewHolder> {
+
+    private List<FacultyEntity> facultys;
+    Context context;
+    private HolderLongClick holderLongClick;
+
+    public FacultyAdapter(List<FacultyEntity> facultyEntities, Context context) {
+        this.context = context;
+        this.facultys = facultyEntities;
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull FacultyEntity model) {
+    public FacultyAdapter(List<FacultyEntity> facultyEntities, Context context, HolderLongClick holderLongClick) {
+        this.context = context;
+        this.facultys = facultyEntities;
+        this.holderLongClick = holderLongClick;
+    }
 
-        holder.nameFaculty.setText("Faculty Name: " + model.getFacultyName());
-        holder.nameDean.setText("Dean Name: " + model.getDeanName());
-        holder.addressDean.setText("Contact Address of Dean: " + model.getAddressDean());
-        holder.nameAssistant.setText("Assistant Name: " + model.getAssistantName());
-        holder.addressAssistant.setText("Contact Address of Assistant: " + model.getAddressAssistant());
+    public FacultyAdapter(HolderLongClick holderLongClick) {
+        this.holderLongClick = holderLongClick;
+    }
+
+    public void setData(List<FacultyEntity> mListFaculty) {
+        facultys = mListFaculty;
+        notifyDataSetChanged();
+    }
+
+
+    public interface HolderLongClick {
+        void showDialog(FacultyEntity facultyEntity);
     }
 
     @NonNull
     @Override
-    public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_faculty,
-                parent, false);
-        return new myviewholder(view);
+    public FacultyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_faculty, parent, false);
+        return new FacultyViewHolder(view);
     }
 
-    class myviewholder extends RecyclerView.ViewHolder{
+    @Override
+    public void onBindViewHolder(@NonNull FacultyViewHolder holder, int position) {
+        FacultyEntity faculty = facultys.get(position);
+        if (faculty == null) {
+            return;
+        }
+        holder.nameFaculty.setText("Faculty Name: " + faculty.getFacultyName());
+        holder.nameDean.setText("Dean Name: " + faculty.getDeanName());
+        holder.addressDean.setText("Contact Address of Dean: " + faculty.getAddressDean());
+        holder.nameAssistant.setText("Assistant Name: " + faculty.getAssistantName());
+        holder.addressAssistant.setText("Contact Address of Assistant: "
+                + faculty.getAddressAssistant());
+        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                holderLongClick.showDialog(faculty);
+                return true;
+            }
+        });
+    }
 
-        TextView nameFaculty, nameDean, addressDean, nameAssistant, addressAssistant;
-        public myviewholder(@NonNull View itemView) {
+    @Override
+    public int getItemCount() {
+        if (facultys != null) {
+            return facultys.size();
+        }
+        return 0;
+    }
 
+    public class FacultyViewHolder extends RecyclerView.ViewHolder {
+        private TextView nameFaculty, nameDean, addressDean, nameAssistant, addressAssistant;
+        View mView;
+
+        public FacultyViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameFaculty = (TextView)itemView.findViewById(R.id.txtNameFaculty);
-            nameDean = (TextView)itemView.findViewById(R.id.txtNameDean);
-            addressDean = (TextView)itemView.findViewById(R.id.txtAddressDean);
-            nameAssistant = (TextView)itemView.findViewById(R.id.txtNameAssistant);
-            addressAssistant = (TextView)itemView.findViewById(R.id.txtAddressAssistant);
 
+            nameFaculty = (TextView) itemView.findViewById(R.id.txtNameFaculty);
+            nameDean = (TextView) itemView.findViewById(R.id.txtNameDean);
+            addressDean = (TextView) itemView.findViewById(R.id.txtAddressDean);
+            nameAssistant = (TextView) itemView.findViewById(R.id.txtNameAssistant);
+            addressAssistant = (TextView) itemView.findViewById(R.id.txtAddressAssistant);
+
+            mView = itemView;
         }
     }
 }

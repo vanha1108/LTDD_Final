@@ -233,11 +233,11 @@ public class SubjectAdminFragment extends Fragment {
     public void handlerSubject(SubjectEntity subjectEntity) {
         if (subjectEntity.getKey() == "") {
             databaseRoot.child("subject").push().setValue(subjectEntity);
-            Toast.makeText(getContext(), "Add subject successfull", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Add subject successful", Toast.LENGTH_LONG).show();
         } else {
             databaseRoot.child("subject").child(subjectEntity.getKey()).setValue(subjectEntity);
             subjectKey = "";
-            Toast.makeText(getContext(), "Update subject successfull", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Update subject successful", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -274,7 +274,8 @@ public class SubjectAdminFragment extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     databaseRoot.child("subject").child(subjectEntity.getKey()).removeValue();
-                    Toast.makeText(getContext(), "Delete subject " + subjectEntity.getName() + " successfull", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Delete subject " + subjectEntity.getName()
+                            + " successful", Toast.LENGTH_LONG).show();
                     reload(subjectEntity.getFacultyName(), databaseRoot);
                 }
             });
