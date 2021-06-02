@@ -1,5 +1,6 @@
 package com.laptrinhdidong.electroniccomunications;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,6 +12,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.laptrinhdidong.electroniccomunications.fragment.ClassesFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.FacultyAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.GradeFragment;
@@ -125,8 +127,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 toolbar.setTitle("Log Out");
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new LogOutFragment()).commit();
+                FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                mFirebaseAuth.signOut();
+                Intent intent = new Intent(getApplicationContext(),LogInActivity.class);
+                startActivity(intent);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
