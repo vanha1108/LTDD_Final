@@ -106,6 +106,13 @@ public class SubjectAdminFragment extends Fragment {
             }
             try {
                 SubjectEntity subject = new SubjectEntity(subjectKey, facultyName, nameSubject, sCredit, sMoney);
+                for (SubjectEntity subjectEntity: subjects) {
+                    if (subjectEntity.getFacultyName().equals(subject.getFacultyName()) &&subjectEntity.getName().equals(subject.getName())) {
+                        Toast.makeText(getContext(), "Name of subject already exist", Toast.LENGTH_LONG).show();
+                        edtName.setText("");
+                        return;
+                    }
+                }
                 handlerSubject(subject);
                 loadData(databaseRoot);
                 subjectAdapter.notifyDataSetChanged();
