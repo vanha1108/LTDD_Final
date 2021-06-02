@@ -90,7 +90,7 @@ public class LogInActivity extends AppCompatActivity {
                             if(task.isSuccessful()) {
                                 Log.i("AA",email+ " "+password);
                                 if(email.equals("admin@gmail.com")){         // ADMIN
-                                    Intent i = new Intent(LogInActivity.this, MainActivity.class);
+                                    Intent i = new Intent(LogInActivity.this, HomeAdminActivity.class);
                                     startActivity(i);
                                 }
                                 else{
