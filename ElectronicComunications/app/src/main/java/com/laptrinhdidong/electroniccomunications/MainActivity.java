@@ -21,6 +21,7 @@ import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragmentAdmin;
+import com.laptrinhdidong.electroniccomunications.fragment.TestScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TimeTableFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragmentAdmin;
 
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_testschedule:
                 toolbar.setTitle("Test Schedule");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ScheduleFragment()).commit();
+                        new TestScheduleFragment()).commit();
                 break;
             case R.id.nav_timetable:
                 toolbar.setTitle("Time Table");
