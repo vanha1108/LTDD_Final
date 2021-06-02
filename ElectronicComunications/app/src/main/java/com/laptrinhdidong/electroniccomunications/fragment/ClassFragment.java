@@ -50,13 +50,7 @@ public class ClassFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_class, container, false);
 
 
-        //spinner
-        spinnerClass = (Spinner)view.findViewById(R.id.spinnerClass);
-        ArrayList<String> arrayClassFaculty = new ArrayList<String>();
-        arrayClassFaculty.add("Information Technology");
-        arrayClassFaculty.add("Computer Engineering");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrayClassFaculty);
-        spinnerClass.setAdapter(arrayAdapter);
+
 
         // recyclerview
         mData= FirebaseDatabase.getInstance().getReference();

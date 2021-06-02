@@ -56,20 +56,14 @@ public class TeacherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_teacher_admin, container, false);
+        View view = inflater.inflate(R.layout.fragment_teacher, container, false);
         // Inflate the layout for this fragment
         mData= FirebaseDatabase.getInstance().getReference();
-        // spinner
-        spinnerFacultyTeacherAdmin = (Spinner)view.findViewById(R.id.spinnerClass);
-        ArrayList<String> arrayClassFaculty = new ArrayList<String>();
-        arrayClassFaculty.add("Information Technology");
-        arrayClassFaculty.add("Computer Engineering");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrayClassFaculty);
-        spinnerFacultyTeacherAdmin.setAdapter(arrayAdapter);
+
 
 
         // recyclerview
-        recyclerView = view.findViewById(R.id.teacherAdminRecyclerView);
+        recyclerView = view.findViewById(R.id.teacherRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         newTeachers = new ArrayList<>();
