@@ -23,6 +23,7 @@ import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.TestScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TimeTableFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.TimeTableViewFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TuitionFragmentAdmin;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_timetable:
                 toolbar.setTitle("Time Table");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new TimeTableFragment()).commit();
+                        new TimeTableViewFragment()).commit();
                 break;
             case R.id.nav_subject:
                 toolbar.setTitle("Subject");

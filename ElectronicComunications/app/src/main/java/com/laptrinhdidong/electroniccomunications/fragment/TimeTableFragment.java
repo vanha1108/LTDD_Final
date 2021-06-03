@@ -39,7 +39,7 @@ public class TimeTableFragment extends Fragment {
 
     private Dialog dialog;
     private FloatingActionButton btnShowDialog;
-    private TextView txtDate;
+    private TextView txtDate, txtShowDate;
     private Spinner spinnerFacultyDialog, spinnerClassDialog, spinnerTeacherDialog, spinnerSubjectDialog,
             spinnerStartDialog, spinnerNumberDialog, spinnerFaculty, spinnerClass, spinnerRoomDialog;
     private Button btnSave, btnClose;
@@ -98,6 +98,7 @@ public class TimeTableFragment extends Fragment {
         spinnerFaculty = view.findViewById(R.id.spinner_faculty_add_time_table);
         spinnerClass = view.findViewById(R.id.spinner_class_add_time_table);
         recyclerTimeTable = view.findViewById(R.id.recyclerAddTimeTable);
+        txtShowDate = view.findViewById(R.id.txtShowDateTimeTable);
 
         // Load recyclerView
         timeTableAdapter = new TimeTableAdapter(timeTables, getContext(), new TimeTableAdapter.HolderLongClick() {
@@ -112,6 +113,7 @@ public class TimeTableFragment extends Fragment {
 
         calendar = Calendar.getInstance();
         txtDate.setText(spdf.format(calendar.getTime()));
+        txtShowDate.setText(spdf.format(calendar.getTime()));
 
         // Load spinnerStart
         lessons = getResources().getStringArray(R.array.lessons);
@@ -213,7 +215,6 @@ public class TimeTableFragment extends Fragment {
         spinnerFaculty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String name = spinnerFaculty.getSelectedItem().toString();
                 reloadAll(databaseRoot);
             }
 
@@ -392,8 +393,10 @@ public class TimeTableFragment extends Fragment {
                     String sDate = dataSnapshot.child("date").getValue(String.class);
                     try {
                         if (!nClass.equals("") && !nTeacher.equals("") && !nSubject.equals("")
-                                && !nRoom.equals("") && !sStart.equals("") && !sNumber.equals("") && className.equals(nClass)) {
-                            TimeTableEntity timeTableEntity = new TimeTableEntity(key, nClass, nTeacher, nSubject, nRoom, sStart, sNumber, sDate);
+                                && !nRoom.equals("") && !sStart.equals("") && !sNumber.equals("")
+                                && className.equals(nClass) && txtShowDate.getText().toString().equals(sDate)) {
+                            TimeTableEntity timeTableEntity = new TimeTableEntity(key, nClass, nTeacher,
+                                    nSubject, nRoom, sStart, sNumber, sDate);
                             timeTables.add(timeTableEntity);
                         }
                     } catch (Exception e) {
@@ -431,8 +434,10 @@ public class TimeTableFragment extends Fragment {
                     String sDate = dataSnapshot.child("date").getValue(String.class);
                     try {
                         if (!nClass.equals("") && !nTeacher.equals("") && !nSubject.equals("")
-                                && !nRoom.equals("") && !sStart.equals("") && !sNumber.equals("") && className.equals(nClass)) {
-                            TimeTableEntity timeTableEntity = new TimeTableEntity(key, nClass, nTeacher, nSubject, nRoom, sStart, sNumber, sDate);
+                                && !nRoom.equals("") && !sStart.equals("") && !sNumber.equals("")
+                                && className.equals(nClass)) {
+                            TimeTableEntity timeTableEntity = new TimeTableEntity(key, nClass, nTeacher,
+                                    nSubject, nRoom, sStart, sNumber, sDate);
                             timeTables.add(timeTableEntity);
                         }
                     } catch (Exception e) {

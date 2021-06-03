@@ -29,6 +29,14 @@
             android:src="@drawable/calendar" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="Faculty" />
+
     <Spinner
         android:id="@+id/spinnerFacultyDialogTimeTable"
         android:layout_width="match_parent"
@@ -36,6 +44,14 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="Class" />
 
     <Spinner
         android:id="@+id/spinnerClassDialogTimeTable"
@@ -45,6 +61,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="Teacher" />
+
     <Spinner
         android:id="@+id/spinnerTeacherDialogTimeTable"
         android:layout_width="match_parent"
@@ -53,6 +77,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="Subject" />
+
     <Spinner
         android:id="@+id/spinnerSubjectNameDialogTimeTable"
         android:layout_width="match_parent"
@@ -60,6 +92,14 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:text="Room" />
 
     <Spinner
         android:id="@+id/spinnerRoomNameDialogTimeTable"
@@ -71,27 +111,57 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:layout_gravity="end"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinnerStartDialogTimeTable"
-            android:layout_width="250dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp" />
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinnerNumberOfLesson"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:text="Lesson" />
+
+            <Spinner
+                android:id="@+id/spinnerStartDialogTimeTable"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:text="Quantity" />
+
+            <Spinner
+                android:id="@+id/spinnerNumberOfLesson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
