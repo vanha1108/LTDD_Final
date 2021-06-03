@@ -1,5 +1,6 @@
 package com.laptrinhdidong.electroniccomunications;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,6 +12,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.laptrinhdidong.electroniccomunications.fragment.ClassesFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.FacultyAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.GradeFragment;
@@ -19,6 +21,7 @@ import com.laptrinhdidong.electroniccomunications.fragment.LogOutFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ParentFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.ScheduleFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.StudentFragment;
+import com.laptrinhdidong.electroniccomunications.fragment.StudentFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.SubjectAdminFragment;
 import com.laptrinhdidong.electroniccomunications.fragment.TeacherFragmentAdmin;
 import com.laptrinhdidong.electroniccomunications.fragment.TestScheduleFragment;
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_studentinfor:
                 toolbar.setTitle("Student Information");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new StudentFragment()).commit();
+                        new StudentFragmentAdmin()).commit();
                 break;
             case R.id.nav_tuition:
                 toolbar.setTitle("Tuition Information");
@@ -125,8 +128,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 toolbar.setTitle("Log Out");
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new LogOutFragment()).commit();
+                FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                mFirebaseAuth.signOut();
+                Intent intent = new Intent(getApplicationContext(),LogInActivity.class);
+                startActivity(intent);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

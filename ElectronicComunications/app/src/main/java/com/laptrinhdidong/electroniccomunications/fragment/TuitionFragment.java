@@ -48,53 +48,8 @@ public class TuitionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tuition_admin, container, false);
-        spinnerFacultyTuitionAdmin = (Spinner)view.findViewById(R.id.spinnerTuitionFaculty);
-        spinnerClassesTuitionAdmin = (Spinner)view.findViewById(R.id.spinnerTuitionClasses);
-        spinnerStudentTuitionAdmin = (Spinner)view.findViewById(R.id.spinnerTuitionStudent);
+        View view = inflater.inflate(R.layout.fragment_tuition, container, false);
 
-        // spinner
-        ArrayList<String> arrayClass2 = new ArrayList<String>();
-
-        ArrayList<String> arrayFaculty = new ArrayList<String>();
-        ArrayList<String> arrayClass = new ArrayList<String>();
-        ArrayList<String> arrayStudent = new ArrayList<String>();
-
-        arrayFaculty.add("Information Technology");
-        arrayFaculty.add("Computer Engineering");
-
-        arrayClass.add("17110CLS2");
-        arrayClass.add("17110CLS3");
-
-        arrayStudent.add("17110125");
-        arrayStudent.add("17110126");
-
-        mData2 = FirebaseDatabase.getInstance().getReference();
-        mData2.child("class").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Classes newClass = dataSnapshot.getValue(Classes.class);
-
-                    arrayClass2.add(newClass.getClassName());
-                }
-                myAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrayFaculty);
-        spinnerFacultyTuitionAdmin.setAdapter(arrayAdapter);
-
-        ArrayAdapter arrayAdapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrayClass2);
-        spinnerClassesTuitionAdmin.setAdapter(arrayAdapter2);
-
-        ArrayAdapter arrayAdapter3 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrayStudent);
-        spinnerStudentTuitionAdmin.setAdapter(arrayAdapter3);
 
 
         mData= FirebaseDatabase.getInstance().getReference();
